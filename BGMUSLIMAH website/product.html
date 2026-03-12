@@ -6,7 +6,7 @@
 
   <!-- PRIMARY SEO -->
   <title>Handmade Abaya | BGMUSLIMAH — Modest Fashion Worldwide</title>
-  <meta name="description" content="Handmade modest fashion. Natural fabrics, elegant design. Pre-order available. Ships worldwide. BGMUSLIMAH.">
+  <meta name="description" content="Handmade modest fashion. Natural fabrics, elegant design. Enquiries welcome. Ships worldwide. BGMUSLIMAH.">
   <meta name="keywords" content="handmade abaya, buy abaya worldwide, modest fashion, khimar, prayer dress, natural fabric abaya, Islamic clothing, Muslim fashion online">
   <meta name="robots" content="index, follow, max-image-preview:large">
   <link rel="canonical" href="https://bgmuslimah.pages.dev/product.html">
@@ -295,7 +295,7 @@ ul{list-style:none;}
   <div class="cart-items" id="cartItems"><p class="cart-empty">Your cart is empty.</p></div>
   <div class="cart-footer" id="cartFooter" style="display:none">
     <div class="cart-total">Total: <span id="cartTotal">0€</span></div>
-    <button class="btn btn-dark" style="width:100%">Proceed to Checkout</button>
+    <button class="btn btn-dark" style="width:100%" onclick="window.location='checkout.html'">Proceed to Checkout</button>
   </div>
 </div>
 
@@ -303,7 +303,7 @@ ul{list-style:none;}
 <div class="modal-overlay" id="preorderOverlay" onclick="closePreorder()"></div>
 <div class="modal" id="preorderModal">
   <button class="close-btn modal-close" onclick="closePreorder()">✕</button>
-  <p style="font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:8px">Pre-Order</p>
+  <p style="font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:8px">Enquiry</p>
   <h3 class="modal-title" id="preorderItemName"></h3>
   <p class="modal-subtitle">Reserve this piece — <strong>no payment needed.</strong><br>We'll contact you on WhatsApp when it's ready.</p>
   <form class="preorder-form" onsubmit="submitPreorder(event)">
@@ -311,7 +311,7 @@ ul{list-style:none;}
     <input type="tel" id="preorderPhone" placeholder="Phone / WhatsApp number" required>
     <select id="preorderSize" required><option value="">Select your size</option></select>
     <textarea id="preorderNotes" placeholder="Any notes? (colour, measurements...)" rows="3"></textarea>
-    <button type="submit" class="btn btn-gold" style="width:100%">Reserve My Piece →</button>
+    <button type="submit" class="btn btn-gold" style="width:100%">Send Enquiry →</button>
   </form>
   <p class="modal-disclaimer">We'll reach out within 1–2 business days. No card details needed.</p>
 </div>
@@ -432,7 +432,7 @@ function renderProductPage() {
         '<p class="size-error" id="sizeError">Please select a size first.</p>' +
         '<div class="product-actions">' +
           '<button class="btn btn-dark" onclick="handleAddToCart()">Add to Cart</button>' +
-          '<button class="btn btn-outline" onclick="handlePreorder()">Pre-Order This Piece</button>' +
+          '<button class="btn btn-outline" onclick="handlePreorder()">Make an Enquiry</button>' +
         '</div>' +
         '<p class="product-description">' + product.description + '</p>' +
         '<div class="details-accordion">' +
@@ -519,7 +519,7 @@ function submitPreorder(event) {
   event.target.reset();
   closePreorder();
   openCart();
-  alert('Thank you, ' + name + '!\n\nYour reservation for ' + item.name + ' in size ' + size + ' is confirmed.\nWe will contact you on WhatsApp at ' + phone + '.\nNo payment needed!');
+  alert('Thank you, ' + name + '!\n\nYour enquiry for ' + item.name + ' in size ' + size + ' is confirmed.\nWe will contact you on WhatsApp at ' + phone + '.\nNo payment required!');
 }
 
 // ================================================================
@@ -550,10 +550,10 @@ function updateCartUI() {
   cartCountEl.textContent = totalItems;
   cartCountEl.style.display = totalItems > 0 ? 'flex' : 'none';
   if (cart.length === 0) { cartItemsEl.innerHTML = '<p class="cart-empty">Your cart is empty.</p>'; cartFooter.style.display = 'none'; return; }
-  var html = hasPreorders ? '<div class="cart-preorder-note">✦ Your cart includes <strong>Pre-Order reservations</strong>. No payment required for these items.</div>' : '';
+  var html = hasPreorders ? '<div class="cart-preorder-note">✦ Your cart includes <strong>Enquiries</strong>. No payment required for these items.</div>' : '';
   html += cart.map(function(item,i){
     return '<div class="cart-item"><div><div style="font-weight:400;margin-bottom:4px">' + item.name + '</div>' +
-      (item.isPreorder ? '<span class="cart-item-tag">Pre-Order · No payment</span>' : '<div style="font-size:12px;color:#9A9A9A">' + item.quantity + ' × ' + item.price + '€</div>') +
+      (item.isPreorder ? '<span class="cart-item-tag">Enquiry · No payment</span>' : '<div style="font-size:12px;color:#9A9A9A">' + item.quantity + ' × ' + item.price + '€</div>') +
       '</div><button class="cart-item-remove" onclick="removeFromCart(' + i + ')">✕</button></div>';
   }).join('');
   cartItemsEl.innerHTML = html;
