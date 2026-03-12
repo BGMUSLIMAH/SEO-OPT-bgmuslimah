@@ -291,22 +291,22 @@ ul { list-style: none; }
   <div class="cart-items" id="cartItems"><p class="cart-empty">Your cart is empty.</p></div>
   <div class="cart-footer" id="cartFooter" style="display:none">
     <div class="cart-total">Total: <span id="cartTotal">0</span></div>
-    <button class="btn btn-dark" style="width:100%">Proceed to Checkout</button>
+    <button class="btn btn-dark" style="width:100%" onclick="window.location='checkout.html'">Proceed to Checkout</button>
   </div>
 </div>
 
 <div class="modal-overlay" id="preorderOverlay" onclick="closePreorder()"></div>
 <div class="modal" id="preorderModal">
   <button class="close-btn modal-close" onclick="closePreorder()">X</button>
-  <p style="font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:8px">Pre-Order</p>
+  <p style="font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:8px">Enquiry</p>
   <h3 class="modal-title" id="preorderItemName">Item Name</h3>
-  <p class="modal-subtitle">Reserve this piece. <strong>No payment needed.</strong> We will contact you on WhatsApp.</p>
+  <p class="modal-subtitle">Reserve this piece. <strong>No payment required.</strong> We will contact you on WhatsApp.</p>
   <form class="preorder-form" onsubmit="submitPreorder(event)">
     <input type="text" id="preorderName" placeholder="Your full name" required>
     <input type="tel" id="preorderPhone" placeholder="Phone / WhatsApp number" required>
     <select id="preorderSize" required><option value="">Select your size</option></select>
     <textarea id="preorderNotes" placeholder="Any notes?" rows="3"></textarea>
-    <button type="submit" class="btn btn-dark" style="width:100%">Reserve My Piece</button>
+    <button type="submit" class="btn btn-dark" style="width:100%">Send Enquiry</button>
   </form>
   <p class="modal-disclaimer">We will reach out within 1-2 business days. No card details needed.</p>
 </div>
@@ -377,7 +377,7 @@ var cart = [];
 var currentPreorderItem = null;
 
 function buildProductCard(product) {
-  var badge = product.preorder ? '<span class="preorder-badge">Pre-Order</span>' : '';
+  var badge = product.preorder ? '<span class="preorder-badge">Enquiry</span>' : '';
   var btnClass = product.preorder ? 'quick-add preorder-btn' : 'quick-add';
   var btnText = product.preorder ? 'Pre-Order Now' : 'View Product';
   var note = product.preorder ? '<span class="preorder-note"> No payment now</span>' : '';
@@ -445,7 +445,7 @@ function updateCartUI() {
   cartCountEl.textContent = totalItems;
   cartCountEl.style.display = totalItems > 0 ? 'flex' : 'none';
   if (cart.length === 0) { cartItemsEl.innerHTML = '<p class="cart-empty">Your cart is empty.</p>'; cartFooter.style.display = 'none'; return; }
-  var html = hasPreorders ? '<div class="cart-preorder-note">Your cart includes Pre-Order reservations. No payment required.</div>' : '';
+  var html = hasPreorders ? '<div class="cart-preorder-note">Your cart includes Enquiries. No payment required.</div>' : '';
   html += cart.map(function(item, i) {
     return '<div class="cart-item"><div><div style="font-weight:400;margin-bottom:4px">' + item.name + '</div>' +
       (item.isPreorder ? '<span class="cart-item-tag">Pre-Order No payment</span>' : '<div style="font-size:12px;color:#9A9A9A">' + item.quantity + ' x ' + item.price + '</div>') +
@@ -489,7 +489,7 @@ function submitPreorder(event) {
   event.target.reset();
   closePreorder();
   openCart();
-  alert('Thank you ' + name + '! Your reservation for ' + item.name + ' in size ' + size + ' is confirmed. We will contact you on WhatsApp at ' + phone);
+  alert('Thank you ' + name + '! Your enquiry for ' + item.name + ' in size ' + size + ' is confirmed. We will contact you on WhatsApp at ' + phone);
 }
 
 window.addEventListener('scroll', function() {
