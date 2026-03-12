@@ -643,8 +643,8 @@ function updateCartUI(){
   cartCountEl.textContent=totalItems;
   cartCountEl.style.display=totalItems>0?'flex':'none';
   if(cart.length===0){cartItemsEl.innerHTML='<p class="cart-empty">Your cart is empty.</p>';cartFooter.style.display='none';return;}
-  var html=hasPreorders?'<div class="cart-preorder-note">✦ Your cart includes <strong>Pre-Order reservations</strong>. No payment required.</div>':'';
-  html+=cart.map(function(item,i){return '<div class="cart-item"><div><div style="font-weight:400;margin-bottom:4px">'+item.name+'</div>'+(item.isPreorder?'<span class="cart-item-tag">Pre-Order · No payment</span>':'<div style="font-size:12px;color:#9A9A9A">'+item.quantity+' × '+item.price+'€</div>')+'</div><button class="cart-item-remove" onclick="removeFromCart('+i+')">✕</button></div>';}).join('');
+  var html=hasPreorders?'<div class="cart-preorder-note">✦ Your cart includes <strong>Enquiries</strong>. No payment required.</div>':'';
+  html+=cart.map(function(item,i){return '<div class="cart-item"><div><div style="font-weight:400;margin-bottom:4px">'+item.name+'</div>'+(item.isPreorder?'<span class="cart-item-tag">Enquiry · No payment</span>':'<div style="font-size:12px;color:#9A9A9A">'+item.quantity+' × '+item.price+'€</div>')+'</div><button class="cart-item-remove" onclick="removeFromCart('+i+')">✕</button></div>';}).join('');
   cartItemsEl.innerHTML=html;
   cartFooter.style.display='block';
   cartTotalEl.textContent=(totalPrice===0&&hasPreorders)?'0€ (reservations only)':totalPrice+'€';
