@@ -333,7 +333,7 @@ var PRODUCTS = [
     description: "A beautifully structured closed abaya in deep black. Clean lines, modest silhouette, and a fabric that drapes elegantly. Handmade in Bulgaria.",
     fabric: "Premium crepe fabric. Breathable and lightweight. Hand-stitched finishing.",
     care: "Hand wash cold. Do not tumble dry. Iron on low heat.",
-    sizes: ["Short", "Long"]
+    sizes: ["M", "L"]
   },
   {
     id: 2,
@@ -345,7 +345,7 @@ var PRODUCTS = [
     description: "Flowing open abaya in soft grey. The perfect layering piece for any occasion. Handmade with care in Bulgaria.",
     fabric: "Soft crepe. Flows beautifully. Fully modest cut.",
     care: "Hand wash cold. Do not tumble dry. Iron on low heat.",
-    sizes: ["Short", "Long"]
+    sizes: ["M", "L"]
   },
   {
     id: 3,
@@ -357,7 +357,7 @@ var PRODUCTS = [
     description: "A complete prayer set in pure white. Comfortable, full coverage, and easy to wear. Handmade in Bulgaria.",
     fabric: "Cotton blend. Soft and breathable for long wear.",
     care: "Machine wash cold. Do not bleach. Iron on low.",
-    sizes: ["Short", "Long"]
+    sizes: ["M", "L"]
   },
   {
     id: 4,
@@ -369,7 +369,7 @@ var PRODUCTS = [
     description: "A classic long khimar in black. Full chest coverage, elegant drape, and a clean modest silhouette.",
     fabric: "Chiffon over jersey lining. Lightweight and non-transparent.",
     care: "Hand wash cold. Hang to dry. Iron on low.",
-    sizes: ["Short", "Long"]
+    sizes: ["M", "L"]
   }
 ];
 
@@ -567,7 +567,7 @@ window.addEventListener('scroll', function() { document.getElementById('navbar')
 document.addEventListener('DOMContentLoaded', function() {
   var saved = localStorage.getItem('bgmuslimah-cart');
   if (saved) { cart = JSON.parse(saved); updateCartUI(); }
-  loadProduct();
+  renderProductPage();
 });
 </script>
 </body>
